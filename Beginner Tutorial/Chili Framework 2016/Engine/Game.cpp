@@ -43,22 +43,22 @@ void Game::UpdateModel()
 void Game::ComposeFrame()
 {
 	/*x line left*/
-	gfx.PutPixel(395, 300, 255, 255, 255); /*(x,y,color(r,g,b))*/
-	gfx.PutPixel(396, 300, 255, 255, 255);
-	gfx.PutPixel(397, 300, 255, 255, 255);
+	gfx.PutPixel(595, 500, 255, 255, 255); /*(x,y,color(r,g,b))*/
+	gfx.PutPixel(596, 500, 255, 255, 255);
+	gfx.PutPixel(597, 500, 255, 255, 255);
 
 	/*x line right*/
-	gfx.PutPixel(403, 300, 255, 255, 255);
-	gfx.PutPixel(404, 300, 255, 255, 255);
-	gfx.PutPixel(405, 300, 255, 255, 255);
+	gfx.PutPixel(603, 500, 255, 255, 255);
+	gfx.PutPixel(604, 500, 255, 255, 255);
+	gfx.PutPixel(605, 500, 255, 255, 255);
 
 	/*y line upside*/
-	gfx.PutPixel(400, 295, 255, 255, 255);
-	gfx.PutPixel(400, 296, 255, 255, 255);
-	gfx.PutPixel(400, 297, 255, 255, 255);
+	gfx.PutPixel(600, 495, 255, 255, 255);
+	gfx.PutPixel(600, 496, 255, 255, 255);
+	gfx.PutPixel(600, 497, 255, 255, 255);
 
 	/*y line downside*/
-	gfx.PutPixel(400, 303, 255, 255, 255);
-	gfx.PutPixel(400, 304, 255, 255, 255);
-	gfx.PutPixel(400, 305, 255, 255, 255);
+	gfx.PutPixel(600, 503, 255, 255, 255);
+	gfx.PutPixel(600, 504, 255, 255, 255);
+	gfx.PutPixel(600, 505, 255, 255, 255);
 }
