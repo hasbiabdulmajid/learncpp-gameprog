@@ -42,30 +42,29 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	int x = 400;
-	int y = 300;
-	bool state = true;
+	
 	int rg = 255;
-
 	if (wnd.kbd.KeyIsPressed(VK_UP)) {
-		y = y - 100;
+		y = y - 2;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_DOWN)) {
-		y = y + 100;
+		y = y + 2;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_LEFT)) {
-		x = x - 100;
+		x = x - 2;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT)) {
-		x = x + 100;
+		x = x + 2;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
 		rg = 0;
+
 	}
+		
 	if (wnd.kbd.KeyIsPressed(VK_SPACE)) {
 		gfx.PutPixel(x - 3, y+3, rg, rg, 255); 
 		gfx.PutPixel(x - 4, y+4, rg, rg, 255);
