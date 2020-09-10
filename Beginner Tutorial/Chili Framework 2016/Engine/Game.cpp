@@ -45,7 +45,7 @@ void Game::ComposeFrame()
 	int x = 400;
 	int y = 300;
 	bool state = true;
-
+	int rg = 255;
 
 	if (wnd.kbd.KeyIsPressed(VK_UP)) {
 		y = y - 100;
@@ -63,26 +63,26 @@ void Game::ComposeFrame()
 		x = x + 100;
 		/*x line left*/
 	}
+	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
+		rg = 0;
+	}
 	
 	/*x line left*/
-	gfx.PutPixel(x - 3, y, 255, 255, 255); /*(x,y,color(r,g,b))*/
-	gfx.PutPixel(x - 4, y, 255, 255, 255);
-	gfx.PutPixel(x - 5, y, 255, 255, 255);
-
-	/*x line right*/
-	gfx.PutPixel(x + 3, y, 255, 255, 255);
-	gfx.PutPixel(x + 4, y, 255, 255, 255);
-	gfx.PutPixel(x + 5, y, 255, 255, 255);
-
-	/*y line upside*/
-	gfx.PutPixel(x, y - 3, 255, 255, 255);
-	gfx.PutPixel(x, y - 4, 255, 255, 255);
-	gfx.PutPixel(x, y - 5, 255, 255, 255);
-
-	/*y line downside*/
-	gfx.PutPixel(x, y + 3, 255, 255, 255);
-	gfx.PutPixel(x, y + 5, 255, 255, 255);
-	gfx.PutPixel(x, y + 4, 255, 255, 255);
+	gfx.PutPixel(x - 3, y, rg,rg, 255); /*(x,y,color(r,g,b))*/
+	gfx.PutPixel(x - 4, y, rg,rg, 255);
+	gfx.PutPixel(x - 5, y, rg,rg, 255);
+						   
+	gfx.PutPixel(x + 3, y, rg,rg, 255);
+	gfx.PutPixel(x + 4, y, rg,rg, 255);
+	gfx.PutPixel(x + 5, y, rg,rg, 255);
+						   
+	gfx.PutPixel(x, y - 3, rg,rg, 255);
+	gfx.PutPixel(x, y - 4, rg,rg, 255);
+	gfx.PutPixel(x, y - 5, rg,rg, 255);
+						   
+	gfx.PutPixel(x, y + 3, rg,rg, 255);
+	gfx.PutPixel(x, y + 5, rg,rg, 255);
+	gfx.PutPixel(x, y + 4, rg,rg, 255);
 
 	
 	
