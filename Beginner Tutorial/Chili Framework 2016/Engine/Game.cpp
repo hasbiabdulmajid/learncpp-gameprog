@@ -126,6 +126,14 @@ void Game::UpdateModel()
 		vx = 0;
 	}
 
+	// Changing color specific region
+	if (x > 30 && x < 150) {
+		rg = 0;
+	}
+	else {
+		rg = 255;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
 		rg = 0;
 
