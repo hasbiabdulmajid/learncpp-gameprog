@@ -39,21 +39,24 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	if (wnd.kbd.KeyIsPressed(VK_UP)) {
-		y = y - 2;
+		vy = vy - 1;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_DOWN)) {
-		y = y + 2;
+		vy = vy + 1;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_LEFT)) {
-		x = x - 2;
+		vx = vx - 1;
 		/*x line left*/
 	}
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT)) {
-		x = x + 2;
+		vx = vx + 1;
 		/*x line left*/
 	}
+
+	x = x + vx;
+	y = y + vy;
 	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
 		rg = 0;
 
