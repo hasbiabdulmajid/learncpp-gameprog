@@ -48,5 +48,9 @@ private:
 	int vy = 0;
 	int rg = 255;
 	bool shapeIsChanged = false;
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
 	/********************************/
 };

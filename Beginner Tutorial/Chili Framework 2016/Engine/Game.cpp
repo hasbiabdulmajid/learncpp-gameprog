@@ -39,20 +39,64 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	if (wnd.kbd.KeyIsPressed(VK_UP)) {
-		vy = vy - 1;
+		if (inhibitUp) {
+
+		}
+		else {
+			vy = vy - 1;
+			inhibitUp = true;
+		}
+		
 		/*x line left*/
 	}
+	else {
+		inhibitUp = false;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_DOWN)) {
-		vy = vy + 1;
+		if (inhibitDown) {
+
+		}
+		else {
+			vy = vy + 1;
+			inhibitDown = true;
+		}
+		
 		/*x line left*/
 	}
+	else {
+		inhibitDown = false;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_LEFT)) {
-		vx = vx - 1;
+		if (inhibitLeft) {
+
+		}
+		else {
+			vx = vx - 1;
+			inhibitLeft = true;
+		}
+		
 		/*x line left*/
 	}
+	else {
+		inhibitLeft = false;
+	}
+
+
 	if (wnd.kbd.KeyIsPressed(VK_RIGHT)) {
-		vx = vx + 1;
+		if (inhibitRight) {
+
+		}
+		else {
+			vx = vx + 1;
+			inhibitRight = true;
+		}
+		
 		/*x line left*/
+	}
+	else {
+		inhibitRight = false;
 	}
 
 	x = x + vx;
