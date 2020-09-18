@@ -101,6 +101,31 @@ void Game::UpdateModel()
 
 	x = x + vx;
 	y = y + vy;
+
+	// X Boundaries
+	if (x + 5 >= gfx.ScreenWidth) {
+		x = gfx.ScreenWidth - 6;
+		vx = 0;
+		vy = 0;
+	}
+	if (x - 5 < 0){
+		x = 5;
+		vx = 0;
+		vy = 0;
+	}
+
+	// Y Boundaries 
+	if (y + 5 >= gfx.ScreenHeight) {
+		y = gfx.ScreenHeight - 6;
+		vy = 0;
+		vx = 0;
+	}
+	if (y - 5 < 0) {
+		y = 5;
+		vy = 0;
+		vx = 0;
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
 		rg = 0;
 
