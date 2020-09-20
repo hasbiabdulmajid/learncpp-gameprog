@@ -167,22 +167,22 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	DrawBox(x_fixed, y_fixed, 100, 100, 255);
 	int r, g;
 
 	if (colliding) {
-		r = 200;
-		g = 0;
+		
+		DrawBox(x, y, 255, 0, 0);
 	}
 	else {
-		r = 255;
-		g = 255;
+		DrawBox(x, y, 255, 255, 255);
 	}
 
-	DrawBox(x, y, r, g, 255);
+	
 
-	int rg_fixed = 100;
+	
 
-	DrawBox(x_fixed, y_fixed, rg_fixed, rg_fixed, 255);
+	
 
 	
 	

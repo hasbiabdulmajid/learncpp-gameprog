@@ -1,2 +1,4 @@
 ﻿  Game.cpp
+D:\Learning Process\C++ Game Programming\learncpp-gameprog\Beginner Tutorial\Chili Framework 2016\Engine\Game.cpp(171,9): warning C4101: 'g': unreferenced local variable
+D:\Learning Process\C++ Game Programming\learncpp-gameprog\Beginner Tutorial\Chili Framework 2016\Engine\Game.cpp(171,6): warning C4101: 'r': unreferenced local variable
   Engine.vcxproj -> D:\Learning Process\C++ Game Programming\learncpp-gameprog\Beginner Tutorial\Chili Framework 2016\x64\Debug\Engine.exe
