@@ -141,10 +141,27 @@ void Game::UpdateModel()
 	}
 	shapeIsChanged = wnd.kbd.KeyIsPressed(VK_SPACE);
 
-	colliding = OverlapTest(x, y, x_fixed, y_fixed);
 
+	const int left_side = x - 5;
+	const int right_side = x + 5;
+	const int top_side = y - 5;
+	const int bottom_side = y + 5;
 
-	
+	const int left_sideFixed = x_fixed - 5;
+	const int right_sideFixed = x_fixed + 5;
+	const int top_sideFixed = y_fixed - 5;
+	const int bottom_sideFixed = y_fixed + 5;
+
+	// collide check
+	if (left_side < right_sideFixed &&
+		right_side > left_sideFixed &&
+		top_side < bottom_sideFixed &&
+		bottom_side > top_sideFixed) {
+		colliding = true;
+	}
+	else {
+		colliding = false;
+	}
 
 }
 
@@ -160,6 +177,17 @@ void Game::ComposeFrame()
 	else {
 		DrawBox(x, y, 255, 255, 255);
 	}
+
+	
+
+	
+
+	
+
+	
+	
+	
+	
 	/* 
 	if (shapeIsChanged) {
 		gfx.PutPixel(x - 3, y+3, rg, rg, 255); 
@@ -224,25 +252,4 @@ void Game::DrawBox(int x, int y, int r, int g, int b) {
 	gfx.PutPixel(x + 5, y + 5, r, g, 255);
 	gfx.PutPixel(x + 5, y + 4, r, g, 255);
 	gfx.PutPixel(x + 5, y + 3, r, g, 255);
-}
-
-bool Game::OverlapTest(int x, int y, int x_fixed, int y_fixed)
-{
-	const int left_side = x - 5;
-	const int right_side = x + 5;
-	const int top_side = y - 5;
-	const int bottom_side = y + 5;
-
-	const int left_sideFixed = x_fixed - 5;
-	const int right_sideFixed = x_fixed + 5;
-	const int top_sideFixed = y_fixed - 5;
-	const int bottom_sideFixed = y_fixed + 5;
-
-	// collide check
-	return (left_side <= right_sideFixed&&
-		right_side >= left_sideFixed &&
-		top_side <= bottom_sideFixed&&
-		bottom_side >= top_sideFixed);
-		
-	
 }
