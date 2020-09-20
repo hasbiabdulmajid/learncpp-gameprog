@@ -43,7 +43,7 @@ private:
 	/********************************/
 	/*  User Variables              */
 	int x = 400;
-	int y = 300;
+	int y = 400;
 	int vx = 0;
 	int vy = 0;
 	int rg = 255;
@@ -52,5 +52,8 @@ private:
 	bool inhibitDown = false;
 	bool inhibitLeft = false;
 	bool inhibitRight = false;
+	int x_fixed = 200;
+	int y_fixed = 200;
+	bool colliding = false;
 	/********************************/
 };

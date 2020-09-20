@@ -127,24 +127,109 @@ void Game::UpdateModel()
 	}
 
 	// Changing color specific region
+	/*
 	if (x > 30 && x < 150) {
 		rg = 0;
 	}
 	else {
 		rg = 255;
-	}
+	} */
 
 	if (wnd.kbd.KeyIsPressed(VK_CONTROL)) {
 		rg = 0;
 
 	}
 	shapeIsChanged = wnd.kbd.KeyIsPressed(VK_SPACE);
+
+
+	const int left_side = x - 5;
+	const int right_side = x + 5;
+	const int top_side = y - 5;
+	const int bottom_side = y + 5;
+
+	const int left_sideFixed = x_fixed - 5;
+	const int right_sideFixed = x_fixed + 5;
+	const int top_sideFixed = y_fixed - 5;
+	const int bottom_sideFixed = y_fixed + 5;
+
+	// collide check
+	if (left_side < right_sideFixed &&
+		right_side > left_sideFixed &&
+		top_side < bottom_sideFixed &&
+		bottom_side > top_sideFixed) {
+		colliding = true;
+	}
+	else {
+		colliding = false;
+	}
+
 }
 
 void Game::ComposeFrame()
 {
+	int r, g;
+
+	if (colliding) {
+		r = 200;
+		g = 0;
+	}
+	else {
+		r = 255;
+		g = 255;
+	}
+	gfx.PutPixel(x - 3, y - 5, r, g, 255); 
+	gfx.PutPixel(x - 4, y - 5, r, g, 255);
+	gfx.PutPixel(x - 5, y - 5, r, g, 255);
+	gfx.PutPixel(x - 5, y - 4, r, g, 255);
+	gfx.PutPixel(x - 5, y - 3, r, g, 255);
+
+	gfx.PutPixel(x - 3, y + 5, r, g, 255);
+	gfx.PutPixel(x - 4, y + 5, r, g, 255);
+	gfx.PutPixel(x - 5, y + 5, r, g, 255);
+	gfx.PutPixel(x - 5, y + 4, r, g, 255);
+	gfx.PutPixel(x - 5, y + 3, r, g, 255);
+
+	gfx.PutPixel(x + 3, y - 5, r, g, 255);
+	gfx.PutPixel(x + 4, y - 5, r, g, 255);
+	gfx.PutPixel(x + 5, y - 5, r, g, 255);
+	gfx.PutPixel(x + 5, y - 4, r, g, 255);
+	gfx.PutPixel(x + 5, y - 3, r, g, 255);
+
+	gfx.PutPixel(x + 3, y + 5, r, g, 255);
+	gfx.PutPixel(x + 4, y + 5, r, g, 255);
+	gfx.PutPixel(x + 5, y + 5, r, g, 255);
+	gfx.PutPixel(x + 5, y + 4, r, g, 255);
+	gfx.PutPixel(x + 5, y + 3, r, g, 255);
+
+	int rg_fixed = 100;
+
+	gfx.PutPixel(x_fixed - 3, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 4, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed - 4, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed - 3, rg_fixed, rg_fixed, 255);
+				  			  				
+	gfx.PutPixel(x_fixed - 3, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 4, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed + 4, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed - 5, y_fixed + 3, rg_fixed, rg_fixed, 255);
+				  			   				
+	gfx.PutPixel(x_fixed + 3, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 4, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed - 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed - 4, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed - 3, rg_fixed, rg_fixed, 255);
+				  			   				
+	gfx.PutPixel(x_fixed + 3, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 4, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed + 5, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed + 4, rg_fixed, rg_fixed, 255);
+	gfx.PutPixel(x_fixed + 5, y_fixed + 3, rg_fixed, rg_fixed, 255);
 	
-		
+	
+	
+	/* 
 	if (shapeIsChanged) {
 		gfx.PutPixel(x - 3, y+3, rg, rg, 255); 
 		gfx.PutPixel(x - 4, y+4, rg, rg, 255);
@@ -161,10 +246,11 @@ void Game::ComposeFrame()
 		gfx.PutPixel(x+3, y + 3, rg, rg, 255);
 		gfx.PutPixel(x+4, y + 4, rg, rg, 255);
 		gfx.PutPixel(x+5, y + 5, rg, rg, 255);
-	}
+	} */ 
+	/*
 	else {
-		/*x line left*/
-		gfx.PutPixel(x - 3, y, rg, rg, 255); /*(x,y,color(r,g,b))*/
+		
+		gfx.PutPixel(x - 3, y, rg, rg, 255);
 		gfx.PutPixel(x - 4, y, rg, rg, 255);
 		gfx.PutPixel(x - 5, y, rg, rg, 255);
 
@@ -180,7 +266,8 @@ void Game::ComposeFrame()
 		gfx.PutPixel(x, y + 5, rg, rg, 255);
 		gfx.PutPixel(x, y + 4, rg, rg, 255);
 
-	}
+	} */
+
 	
 	
 
