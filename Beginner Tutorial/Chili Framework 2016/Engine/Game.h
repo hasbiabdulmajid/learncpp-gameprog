@@ -54,8 +54,14 @@ private:
 	bool inhibitDown = false;
 	bool inhibitLeft = false;
 	bool inhibitRight = false;
-	int x_fixed = 200;
-	int y_fixed = 200;
+	int x_fixed0 = 200;
+	int y_fixed0 = 200;
+	int x_fixed1 = 250;
+	int y_fixed1 = 250;
+	int x_fixed2 = 300;
+	int y_fixed2 = 300;
+	int x_fixed3 = 350;
+	int y_fixed3 = 350;
 	bool colliding = false;
 	/********************************/
 };

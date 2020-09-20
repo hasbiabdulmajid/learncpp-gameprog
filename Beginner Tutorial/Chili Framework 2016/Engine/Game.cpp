@@ -141,7 +141,11 @@ void Game::UpdateModel()
 	}
 	shapeIsChanged = wnd.kbd.KeyIsPressed(VK_SPACE);
 
-	colliding = OverlapTest(x, y, x_fixed, y_fixed);
+	colliding = 
+		OverlapTest(x, y, x_fixed0, y_fixed0)||
+		OverlapTest(x, y, x_fixed1, y_fixed1) ||
+		OverlapTest(x, y, x_fixed2, y_fixed2) ||
+		OverlapTest(x, y, x_fixed3, y_fixed3);
 
 
 	
@@ -150,7 +154,10 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	DrawBox(x_fixed, y_fixed, 100, 100, 255);
+	DrawBox(x_fixed0, y_fixed0, 100, 100, 255);
+	DrawBox(x_fixed1, y_fixed1, 100, 100, 255);
+	DrawBox(x_fixed2, y_fixed2, 100, 100, 255);
+	DrawBox(x_fixed3, y_fixed3, 100, 100, 255);
 	int r, g;
 
 	if (colliding) {
