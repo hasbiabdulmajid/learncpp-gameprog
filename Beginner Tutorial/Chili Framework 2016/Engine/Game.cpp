@@ -102,29 +102,7 @@ void Game::UpdateModel()
 	x = x + vx;
 	y = y + vy;
 
-	// X Boundaries
-	if (x + 5 >= gfx.ScreenWidth) {
-		x = gfx.ScreenWidth - 6;
-		vx = 0;
-		vy = 0;
-	}
-	if (x - 5 < 0){
-		x = 5;
-		vx = 0;
-		vy = 0;
-	}
-
-	// Y Boundaries 
-	if (y + 5 >= gfx.ScreenHeight) {
-		y = gfx.ScreenHeight - 6;
-		vy = 0;
-		vx = 0;
-	}
-	if (y - 5 < 0) {
-		y = 5;
-		vy = 0;
-		vx = 0;
-	}
+	Boundaries();
 
 	// Changing color specific region
 	/*
@@ -142,7 +120,7 @@ void Game::UpdateModel()
 	shapeIsChanged = wnd.kbd.KeyIsPressed(VK_SPACE);
 
 	colliding = 
-		OverlapTest(x, y, x_fixed0, y_fixed0)||
+		OverlapTest(x, y, x_fixed0, y_fixed0) ||
 		OverlapTest(x, y, x_fixed1, y_fixed1) ||
 		OverlapTest(x, y, x_fixed2, y_fixed2) ||
 		OverlapTest(x, y, x_fixed3, y_fixed3);
@@ -208,24 +186,25 @@ void Game::ComposeFrame()
 }
 
 void Game::DrawBox(int x, int y, int r, int g, int b) {
+	//upper left corner
 	gfx.PutPixel(x - 3, y - 5, r, g, 255);
 	gfx.PutPixel(x - 4, y - 5, r, g, 255);
 	gfx.PutPixel(x - 5, y - 5, r, g, 255);
 	gfx.PutPixel(x - 5, y - 4, r, g, 255);
 	gfx.PutPixel(x - 5, y - 3, r, g, 255);
-
+	//bottom left corner
 	gfx.PutPixel(x - 3, y + 5, r, g, 255);
 	gfx.PutPixel(x - 4, y + 5, r, g, 255);
 	gfx.PutPixel(x - 5, y + 5, r, g, 255);
 	gfx.PutPixel(x - 5, y + 4, r, g, 255);
 	gfx.PutPixel(x - 5, y + 3, r, g, 255);
-
+	//upper right corner
 	gfx.PutPixel(x + 3, y - 5, r, g, 255);
 	gfx.PutPixel(x + 4, y - 5, r, g, 255);
 	gfx.PutPixel(x + 5, y - 5, r, g, 255);
 	gfx.PutPixel(x + 5, y - 4, r, g, 255);
 	gfx.PutPixel(x + 5, y - 3, r, g, 255);
-
+	//bottom right corner
 	gfx.PutPixel(x + 3, y + 5, r, g, 255);
 	gfx.PutPixel(x + 4, y + 5, r, g, 255);
 	gfx.PutPixel(x + 5, y + 5, r, g, 255);
@@ -252,4 +231,36 @@ bool Game::OverlapTest(int x, int y, int x_fixed, int y_fixed)
 		bottom_side >= top_sideFixed);
 		
 	
+}
+
+void Game::Boundaries()
+{
+	const int left_side = x - 5;
+	const int right_side = x + 5;
+	const int top_side = y - 5;
+	const int bottom_side = y + 5;
+
+	// X Boundaries
+	if (right_side >= gfx.ScreenWidth) {
+		x = gfx.ScreenWidth - 6;
+		vx = 0;
+		vy = 0;
+	} 
+	else if (left_side< 0) {
+		x = 5;
+		vx = 0;
+		vy = 0;
+	}
+
+	// Y Boundaries 
+	if (bottom_side >= gfx.ScreenHeight) {
+		y = gfx.ScreenHeight - 6;
+		vy = 0;
+		vx = 0;
+	}
+	else if (top_side < 0) {
+		y = 5;
+		vy = 0;
+		vx = 0;
+	}
 }
