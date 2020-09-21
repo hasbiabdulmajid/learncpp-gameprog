@@ -38,7 +38,9 @@ private:
 	/*  User Functions              */
 	void DrawBox(int x, int y, int r, int g, int b);
 	bool OverlapTest(int x, int y, int x_fixed, int y_fixed);
-	void Boundaries();
+	int BoundariesX(int x);
+	int BoundariesY(int y);
+
 	/********************************/
 private:
 	MainWindow& wnd;

@@ -101,8 +101,10 @@ void Game::UpdateModel()
 
 	x = x + vx;
 	y = y + vy;
-
-	Boundaries();
+	
+	x = BoundariesX(x);
+	y = BoundariesY(y);
+	
 
 	// Changing color specific region
 	/*
@@ -233,34 +235,51 @@ bool Game::OverlapTest(int x, int y, int x_fixed, int y_fixed)
 	
 }
 
-void Game::Boundaries()
+int Game::BoundariesX(int x)
 {
 	const int left_side = x - 5;
 	const int right_side = x + 5;
-	const int top_side = y - 5;
-	const int bottom_side = y + 5;
+
 
 	// X Boundaries
 	if (right_side >= gfx.ScreenWidth) {
-		x = gfx.ScreenWidth - 6;
-		vx = 0;
-		vy = 0;
+
+		
+		return gfx.ScreenWidth - 6;
+		
+		
 	} 
-	else if (left_side< 0) {
-		x = 5;
-		vx = 0;
-		vy = 0;
+	else if (left_side < 0) {
+		
+		return 5;
+		
 	}
+	else {
+		return x;
+	}
+
+}
+
+int Game::BoundariesY(int Y)
+{
+
+	const int top_side = y - 5;
+	const int bottom_side = y + 5;
+
 
 	// Y Boundaries 
 	if (bottom_side >= gfx.ScreenHeight) {
-		y = gfx.ScreenHeight - 6;
-		vy = 0;
-		vx = 0;
+		
+		return gfx.ScreenHeight - 6;
+		
 	}
 	else if (top_side < 0) {
-		y = 5;
-		vy = 0;
-		vx = 0;
+		
+		return 5;
+	}
+	else {
+		return y;
 	}
 }
+
+
