@@ -20,12 +20,24 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include <random>
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd )
 {
+	std::random_device rd;
+	std::mt19937 rng(rd());
+	std::uniform_int_distribution<int> xRand(0, 770);
+	std::uniform_int_distribution<int> yRand(0, 570);
+	item0X = xRand(rng);
+	item0Y = yRand(rng);
+	item1X = xRand(rng);
+	item1Y = yRand(rng);
+	item2X = xRand(rng);
+	item2Y = yRand(rng);
+
 }
 
 void Game::Go()
