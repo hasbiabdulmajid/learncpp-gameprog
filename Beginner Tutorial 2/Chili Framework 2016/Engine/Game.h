@@ -38,6 +38,8 @@ private:
 	/*  User Functions              */
 	void DrawFace(int x, int y);
 	void DrawItem(int x, int y);
+	int clampX(int x, int width);
+	int clampY(int y, int height);
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -46,6 +48,8 @@ private:
 	/*  User Variables              */
 	int charX = 400;
 	int charY = 300;
+	int charWidth = 20;
+
 	int item0X = 300;
 	int item0Y = 150;
 	bool item0IsPicked = false;
