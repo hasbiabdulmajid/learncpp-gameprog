@@ -1,7 +1,9 @@
 ﻿  Game.cpp
+  Main.cpp
+  MainWindow.cpp
   Generating code
-  3 of 531 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+  4 of 532 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Engine.vcxproj -> D:\Learning Process\C++ Game Programming\learncpp-gameprog\Beginner Tutorial 2\Chili Framework 2016\Release\Engine.exe

@@ -38,6 +38,7 @@ private:
 	/*  User Functions              */
 	void DrawFace(int x, int y);
 	void DrawItem(int x, int y);
+	void DrawGameOver(int x, int y);
 	int clampX(int x, int width);
 	int clampY(int y, int height);
 	bool isColliding(int x0,int y0,int width0,int height0,
