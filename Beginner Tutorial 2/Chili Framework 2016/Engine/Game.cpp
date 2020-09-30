@@ -38,6 +38,20 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT)) {
+		charX += 1;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT)) {
+		charX -= 1;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_DOWN)) {
+		charY += 1;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_UP)) {
+		charY -= 1;
+	}
+	charX = clampX(charX, charWidth);
+	charY = clampY(charY, charHeight);
 }
 
 void Game::DrawFace(int x, int y)

@@ -49,6 +49,7 @@ private:
 	int charX = 400;
 	int charY = 300;
 	int charWidth = 20;
+	int charHeight = 20;
 
 	int item0X = 300;
 	int item0Y = 150;
