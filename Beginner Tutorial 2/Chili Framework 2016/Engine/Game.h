@@ -42,5 +42,16 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	int charX = 400;
+	int charY = 300;
+	int item0X = 300;
+	int item0Y = 150;
+	bool item0IsPicked = false;
+	int item1X = 100;
+	int item1Y = 500;
+	bool item1IsPicked = false;
+	int item2X = 600;
+	int item2Y = 400;
+	bool item2IsPicked = false;
 	/********************************/
 };
