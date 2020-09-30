@@ -39,6 +39,7 @@ private:
 	void DrawFace(int x, int y);
 	void DrawItem(int x, int y);
 	void DrawGameOver(int x, int y);
+	void DrawTitleScreen(int x, int y);
 	int clampX(int x, int width);
 	int clampY(int y, int height);
 	bool isColliding(int x0,int y0,int width0,int height0,
@@ -65,5 +66,6 @@ private:
 	bool item2IsPicked = false;
 	int itemWidth = 24;
 	int itemHeight = 24;
+	bool isStarted = false;
 	/********************************/
 };
