@@ -40,6 +40,8 @@ private:
 	void DrawItem(int x, int y);
 	int clampX(int x, int width);
 	int clampY(int y, int height);
+	bool isColliding(int x0,int y0,int width0,int height0,
+		int x1, int y1, int width1, int height1);
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -60,5 +62,7 @@ private:
 	int item2X = 600;
 	int item2Y = 400;
 	bool item2IsPicked = false;
+	int itemWidth = 24;
+	int itemHeight = 24;
 	/********************************/
 };

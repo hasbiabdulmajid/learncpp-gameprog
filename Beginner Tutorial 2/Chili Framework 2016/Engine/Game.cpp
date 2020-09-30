@@ -52,6 +52,20 @@ void Game::UpdateModel()
 	}
 	charX = clampX(charX, charWidth);
 	charY = clampY(charY, charHeight);
+
+	//item0IsPicked = isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight);
+	//item1IsPicked = isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight);
+	//item2IsPicked = isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight);
+
+	if (isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight)) {
+		item0IsPicked = true;
+	}
+	if (isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight)) {
+		item1IsPicked = true;
+	}
+	if (isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight)) {
+		item2IsPicked = true;
+	}
 }
 
 void Game::DrawFace(int x, int y)
@@ -639,10 +653,31 @@ int Game::clampY(int y, int height)
 	}
 }
 
+bool Game::isColliding(int x0, int y0, int width0, int height0, int x1, int y1, int width1, int height1)
+{
+	const int right0 = x0 + width0;
+	const int bottom0 = y0 + height0;
+	const int right1 = x1 + width1;
+	const int bottom1 = y1 + height1;
+
+	return
+		right0 >= x1 &&
+		x0 <= right1 &&
+		bottom0 >= y1 &&
+		y0 <= bottom1;
+}
+
 void Game::ComposeFrame()
 {
 	DrawFace(charX, charY);
-	DrawItem(item0X, item0Y);
-	DrawItem(item1X, item1Y);
-	DrawItem(item2X, item2Y);
+	if (!item0IsPicked) {
+		DrawItem(item0X, item0Y);
+	}
+	if (!item1IsPicked) {
+		DrawItem(item1X, item1Y);
+	}
+	if (!item2IsPicked) {
+		DrawItem(item2X, item2Y);
+	}
+	
 }
