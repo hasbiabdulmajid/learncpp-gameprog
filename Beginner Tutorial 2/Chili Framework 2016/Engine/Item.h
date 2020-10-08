@@ -8,8 +8,8 @@ public:
 	int y;
 	int vx;
 	int vy;
-	int width = 24;
-	int height = 24;
+	static constexpr int width = 24;
+	static constexpr int height = 24;
 
 	bool isPicked = false;
 };
