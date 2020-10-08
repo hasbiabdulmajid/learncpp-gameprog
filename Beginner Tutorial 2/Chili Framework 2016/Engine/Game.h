@@ -44,6 +44,9 @@ private:
 	int clampY(int y, int height);
 	bool isColliding(int x0,int y0,int width0,int height0,
 		int x1, int y1, int width1, int height1);
+	void movementX0();
+	void movementX2();
+	void movementY1();
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -67,5 +70,8 @@ private:
 	int itemWidth = 24;
 	int itemHeight = 24;
 	bool isStarted = false;
+	int speed0 = 1;
+	int speed1 = 1;
+	int speed2 = -1;
 	/********************************/
 };

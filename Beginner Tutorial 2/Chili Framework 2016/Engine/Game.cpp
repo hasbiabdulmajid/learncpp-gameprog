@@ -66,7 +66,10 @@ void Game::UpdateModel()
 		}
 		charX = clampX(charX, charWidth);
 		charY = clampY(charY, charHeight);
-
+		//item0X = movementX(item0X, itemWidth);
+		movementX0();
+		movementX2();
+		movementY1();
 		//item0IsPicked = isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight);
 		//item1IsPicked = isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight);
 		//item2IsPicked = isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight);
@@ -29033,6 +29036,57 @@ bool Game::isColliding(int x0, int y0, int width0, int height0, int x1, int y1, 
 		x0 <= right1 &&
 		bottom0 >= y1 &&
 		y0 <= bottom1;
+}
+
+void Game::movementX0()
+{
+	if (item0X > 0) {
+
+		item0X += speed0;
+		if (item0X + itemWidth > gfx.ScreenWidth) {
+			speed0 = -1;
+		}
+
+	}
+
+	if (item0X == 0) {
+		speed0 = 1;
+		item0X += speed0;
+	}
+}
+
+void Game::movementX2()
+{
+	if (item2X > 0) {
+
+		item2X += speed2;
+		if (item2X + itemWidth > gfx.ScreenWidth) {
+			speed2 = -1;
+		}
+
+	}
+
+	if (item2X == 0) {
+		speed2 = 1;
+		item2X += speed2;
+	}
+}
+
+void Game::movementY1()
+{
+	if (item1Y > 0) {
+
+		item1Y += speed1;
+		if (item1Y + itemHeight> gfx.ScreenHeight) {
+			speed1 = -1;
+		}
+
+	}
+
+	if (item1Y == 0) {
+		speed1 = 1;
+		item1Y += speed1;
+	}
 }
 
 void Game::ComposeFrame()
