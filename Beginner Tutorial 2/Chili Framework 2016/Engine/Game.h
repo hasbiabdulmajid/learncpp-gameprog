@@ -61,12 +61,21 @@ private:
 	int item0X = 300;
 	int item0Y = 150;
 	bool item0IsPicked = false;
+	int item0vx = 1;
+	int item0vy = 1;
+
 	int item1X = 100;
 	int item1Y = 500;
 	bool item1IsPicked = false;
+	int item1vx = 1;
+	int item1vy = 1;
+
 	int item2X = 600;
 	int item2Y = 400;
 	bool item2IsPicked = false;
+	int item2vx = 1;
+	int item2vy = 1;
+
 	int itemWidth = 24;
 	int itemHeight = 24;
 	bool isStarted = false;

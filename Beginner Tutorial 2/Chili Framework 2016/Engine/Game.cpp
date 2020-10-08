@@ -66,10 +66,58 @@ void Game::UpdateModel()
 		}
 		charX = clampX(charX, charWidth);
 		charY = clampY(charY, charHeight);
-		//item0X = movementX(item0X, itemWidth);
-		movementX0();
-		movementX2();
-		movementY1();
+		
+
+		item0X += item0vx;
+		item0Y += item0vy;
+		item1X += item1vx;
+		item1Y += item1vy;
+		item2X += item2vx;
+		item2Y += item2vy;
+
+		{
+			const int item0Xbefore = item0X;
+			const int item0Ybefore = item0Y;
+
+			item0X = clampX(item0X, itemWidth);
+			if (item0X != item0Xbefore) {
+				item0vx = -item0vx;
+			}
+
+			item0Y = clampY(item0Y, itemHeight);
+			if (item0Y != item0Ybefore) {
+				item0vy = -item0vy;
+			}
+
+			const int item1Xbefore = item1X;
+			const int item1Ybefore = item1Y;
+
+			item1X = clampX(item1X, itemWidth);
+			if (item1X != item1Xbefore) {
+				item1vx = -item1vx;
+			}
+
+			item1Y = clampY(item1Y, itemHeight);
+			if (item1Y != item1Ybefore) {
+				item1vy = -item1vy;
+			}
+
+			const int item2Xbefore = item2X;
+			const int item2Ybefore = item2Y;
+
+			item2X = clampX(item2X, itemWidth);
+			if (item2X != item2Xbefore) {
+				item2vx = -item2vx;
+			}
+
+			item2Y = clampY(item2Y, itemHeight);
+			if (item2Y != item2Ybefore) {
+				item2vy = -item2vy;
+			}
+		}
+		//movementX0();
+		//movementX2();
+		//movementY1();
 		//item0IsPicked = isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight);
 		//item1IsPicked = isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight);
 		//item2IsPicked = isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight);
