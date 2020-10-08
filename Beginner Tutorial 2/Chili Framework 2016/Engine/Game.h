@@ -23,6 +23,7 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Item.h"
 
 class Game
 {
@@ -44,9 +45,7 @@ private:
 	int clampY(int y, int height);
 	bool isColliding(int x0,int y0,int width0,int height0,
 		int x1, int y1, int width1, int height1);
-	void movementX0();
-	void movementX2();
-	void movementY1();
+
 	/********************************/
 private:
 	MainWindow& wnd;
@@ -57,30 +56,12 @@ private:
 	int charY = 300;
 	int charWidth = 20;
 	int charHeight = 20;
+	
 
-	int item0X = 300;
-	int item0Y = 150;
-	bool item0IsPicked = false;
-	int item0vx = 1;
-	int item0vy = 1;
+	Item item0;
+	Item item1;
+	Item item2;
 
-	int item1X = 100;
-	int item1Y = 500;
-	bool item1IsPicked = false;
-	int item1vx = 1;
-	int item1vy = 1;
-
-	int item2X = 600;
-	int item2Y = 400;
-	bool item2IsPicked = false;
-	int item2vx = 1;
-	int item2vy = 1;
-
-	int itemWidth = 24;
-	int itemHeight = 24;
 	bool isStarted = false;
-	int speed0 = 1;
-	int speed1 = 1;
-	int speed2 = -1;
 	/********************************/
 };

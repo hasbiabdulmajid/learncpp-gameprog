@@ -31,12 +31,19 @@ Game::Game( MainWindow& wnd )
 	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> xRand(0, 770);
 	std::uniform_int_distribution<int> yRand(0, 570);
-	item0X = xRand(rng);
-	item0Y = yRand(rng);
-	item1X = xRand(rng);
-	item1Y = yRand(rng);
-	item2X = xRand(rng);
-	item2Y = yRand(rng);
+	item0.x= xRand(rng);
+	item0.y = yRand(rng);
+	item1.x= xRand(rng);
+	item1.y = yRand(rng);
+	item2.x= xRand(rng);
+	item2.y = yRand(rng);
+
+	item0.vx = 1;
+	item0.vy = -1;
+	item1.vx = 1;
+	item1.vy = 1;
+	item2.vx = -1;
+	item2.vy = 1;
 
 }
 
@@ -68,68 +75,26 @@ void Game::UpdateModel()
 		charY = clampY(charY, charHeight);
 		
 
-		item0X += item0vx;
-		item0Y += item0vy;
-		item1X += item1vx;
-		item1Y += item1vy;
-		item2X += item2vx;
-		item2Y += item2vy;
+	
 
-		{
-			const int item0Xbefore = item0X;
-			const int item0Ybefore = item0Y;
-
-			item0X = clampX(item0X, itemWidth);
-			if (item0X != item0Xbefore) {
-				item0vx = -item0vx;
-			}
-
-			item0Y = clampY(item0Y, itemHeight);
-			if (item0Y != item0Ybefore) {
-				item0vy = -item0vy;
-			}
-
-			const int item1Xbefore = item1X;
-			const int item1Ybefore = item1Y;
-
-			item1X = clampX(item1X, itemWidth);
-			if (item1X != item1Xbefore) {
-				item1vx = -item1vx;
-			}
-
-			item1Y = clampY(item1Y, itemHeight);
-			if (item1Y != item1Ybefore) {
-				item1vy = -item1vy;
-			}
-
-			const int item2Xbefore = item2X;
-			const int item2Ybefore = item2Y;
-
-			item2X = clampX(item2X, itemWidth);
-			if (item2X != item2Xbefore) {
-				item2vx = -item2vx;
-			}
-
-			item2Y = clampY(item2Y, itemHeight);
-			if (item2Y != item2Ybefore) {
-				item2vy = -item2vy;
-			}
-		}
+		item0.Update();
+		item1.Update();
+		item2.Update();
 		//movementX0();
 		//movementX2();
 		//movementY1();
-		//item0IsPicked = isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight);
-		//item1IsPicked = isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight);
-		//item2IsPicked = isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight);
+		//item0.isPicked = isColliding(charX, charY, charWidth, charHeight, item0.x, item0.y, itemWidth, itemHeight);
+		//item1.isPicked = isColliding(charX, charY, charWidth, charHeight, item1.x, item1.y, itemWidth, itemHeight);
+		//item2.isPicked = isColliding(charX, charY, charWidth, charHeight, item2.x, item2.y, itemWidth, itemHeight);
 
-		if (isColliding(charX, charY, charWidth, charHeight, item0X, item0Y, itemWidth, itemHeight)) {
-			item0IsPicked = true;
+		if (isColliding(charX, charY, charWidth, charHeight, item0.x, item0.y, item0.width, item0.height)) {
+			item0.isPicked = true;
 		}
-		if (isColliding(charX, charY, charWidth, charHeight, item1X, item1Y, itemWidth, itemHeight)) {
-			item1IsPicked = true;
+		if (isColliding(charX, charY, charWidth, charHeight, item1.x, item1.y, item1.width, item1.height)) {
+			item1.isPicked = true;
 		}
-		if (isColliding(charX, charY, charWidth, charHeight, item2X, item2Y, itemWidth, itemHeight)) {
-			item2IsPicked = true;
+		if (isColliding(charX, charY, charWidth, charHeight, item2.x, item2.y, item2.width, item2.height)) {
+			item2.isPicked = true;
 		}
 	} 
 	else {
@@ -29086,56 +29051,9 @@ bool Game::isColliding(int x0, int y0, int width0, int height0, int x1, int y1, 
 		y0 <= bottom1;
 }
 
-void Game::movementX0()
-{
-	if (item0X > 0) {
 
-		item0X += speed0;
-		if (item0X + itemWidth > gfx.ScreenWidth) {
-			speed0 = -1;
-		}
 
-	}
 
-	if (item0X == 0) {
-		speed0 = 1;
-		item0X += speed0;
-	}
-}
-
-void Game::movementX2()
-{
-	if (item2X > 0) {
-
-		item2X += speed2;
-		if (item2X + itemWidth > gfx.ScreenWidth) {
-			speed2 = -1;
-		}
-
-	}
-
-	if (item2X == 0) {
-		speed2 = 1;
-		item2X += speed2;
-	}
-}
-
-void Game::movementY1()
-{
-	if (item1Y > 0) {
-
-		item1Y += speed1;
-		if (item1Y + itemHeight> gfx.ScreenHeight) {
-			speed1 = -1;
-		}
-
-	}
-
-	if (item1Y == 0) {
-		speed1 = 1;
-		item1Y += speed1;
-	}
-}
 
 void Game::ComposeFrame()
 {
@@ -29143,20 +29061,18 @@ void Game::ComposeFrame()
 		DrawTitleScreen(325, 211);
 	}
 	else {
-
-
-		if (item1IsPicked && item1IsPicked && item2IsPicked) {
+		if (item1.isPicked && item1.isPicked && item2.isPicked) {
 			DrawGameOver(358, 268);
 		}
 		DrawFace(charX, charY);
-		if (!item0IsPicked) {
-			DrawItem(item0X, item0Y);
+		if (!item0.isPicked) {
+			DrawItem(item0.x, item0.y);
 		}
-		if (!item1IsPicked) {
-			DrawItem(item1X, item1Y);
+		if (!item1.isPicked) {
+			DrawItem(item1.x, item1.y);
 		}
-		if (!item2IsPicked) {
-			DrawItem(item2X, item2Y);
+		if (!item2.isPicked) {
+			DrawItem(item2.x, item2.y);
 		}
 	}
 	
